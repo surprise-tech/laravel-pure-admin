@@ -5,7 +5,6 @@ import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { templateRef } from "@vueuse/core";
 import SidebarItem from "./sidebarItem.vue";
-import avatars from "/@/assets/avatars.jpg";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
 import { deviceDetection } from "/@/utils/deviceDetection";
@@ -30,6 +29,7 @@ const {
   handleResize,
   menuSelect,
   username,
+  avatars,
   avatarsStyle,
   getDropdownItemStyle
 } = useNav();

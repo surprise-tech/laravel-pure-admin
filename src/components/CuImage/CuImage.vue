@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { computed, getCurrentInstance } from "vue";
-const fileRoot =
-  getCurrentInstance().appContext.config.globalProperties.$config?.FileRoot;
+import { computed } from "vue";
+import { getFilePath } from "/@/utils/util";
 
 const props = defineProps<{
   src?: string;
@@ -9,20 +8,6 @@ const props = defineProps<{
   index?: number;
   list?: Array<string>;
 }>();
-
-// 获取全路径
-const getFilePath = path => {
-  if (path) {
-    if (/^http/.test(path)) {
-      return path;
-    } else if (/^\//.test(path)) {
-      return fileRoot + path;
-    } else {
-      return fileRoot + "/" + path;
-    }
-  }
-  return "";
-};
 
 // 计算全路径
 let path = computed(() => {

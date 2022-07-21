@@ -19,3 +19,5 @@ tests/**/coverage/
 *.njsproj
 *.sln
 .env.development
+
+src/views/article

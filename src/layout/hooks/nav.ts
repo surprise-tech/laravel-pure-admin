@@ -9,6 +9,7 @@ import { storageSession } from "/@/utils/storage";
 import { useAppStoreHook } from "/@/store/modules/app";
 import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 import { useUserStoreHook } from "/@/store/modules/user";
+import { getFilePath } from "/@/utils/util";
 
 const errorInfo = "当前路由配置不正确，请检查配置";
 
@@ -18,7 +19,7 @@ export function useNav() {
   const username: string = storageSession.getItem("info")?.username;
 
   // 头像
-  const avatars: string = storageSession.getItem("info")?.avatar;
+  const avatars: string = getFilePath(storageSession.getItem("info")?.avatar);
 
   // 设置国际化选中后的样式
   const getDropdownItemStyle = computed(() => {

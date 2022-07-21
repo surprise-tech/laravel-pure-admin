@@ -29,7 +29,6 @@ const onLogin = async (formEl: FormInstance | undefined) => {
         .loginByUsername(ruleForm)
         .then(loginRes => {
           loading.value = false;
-          console.log(loginRes);
           // 初始化路由
           storageSession.setItem("info", {
             username: loginRes["name"],

@@ -94,9 +94,11 @@ defineExpose({ onReset });
 <!-- 自定义组件 -->
 <script lang="ts">
 import CuSelect from "./CuFormItem/CuSelect.vue";
+import CuUpload from "./CuFormItem/CuUpload.vue";
 export default {
   components: {
-    "cu-select": CuSelect
+    "cu-select": CuSelect,
+    "cu-upload": CuUpload
   }
 };
 </script>

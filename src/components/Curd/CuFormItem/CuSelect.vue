@@ -1,32 +1,23 @@
 <script lang="ts" setup>
-import { reactive, watch } from "vue";
+import { reactive } from "vue";
 
 const emits = defineEmits(["update:modelValue"]);
-let selectedVal = reactive({
-  value: null
-});
-const props = defineProps({
-  bind: {
-    type: Object,
-    default: () => {
-      return {};
-    }
-  },
-  options: {
-    type: Object,
-    default: () => {
-      return {};
-    }
-  },
-  modelValue: {}
-});
+interface SelectOpt {
+  label: string;
+  value: any;
+  created?: boolean;
+  disabled?: boolean;
+}
+const props = defineProps<{
+  options: Object;
+  placeholder: string;
+  selectOptions: Array<SelectOpt>;
+  modelValue?: any;
+}>();
 
-watch(
-  () => props.modelValue,
-  newVal => {
-    selectedVal.value = newVal;
-  }
-);
+let selectedVal = reactive({
+  value: props.modelValue
+});
 
 const selectChange = e => {
   emits("update:modelValue", e);
@@ -34,15 +25,17 @@ const selectChange = e => {
 </script>
 
 <template>
-  <el-select
-    v-model="selectedVal.value"
-    v-bind="props.bind"
-    @change="selectChange"
-  >
-    <el-option
-      v-for="(opt, index) in props.options"
-      v-bind="opt"
-      :key="index"
-    />
-  </el-select>
+  <div>
+    <el-select
+      v-model="selectedVal.value"
+      v-bind="props.options"
+      @change="selectChange"
+    >
+      <el-option
+        v-for="(opt, index) in props.selectOptions"
+        v-bind="opt"
+        :key="index"
+      />
+    </el-select>
+  </div>
 </template>

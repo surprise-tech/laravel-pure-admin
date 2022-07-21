@@ -4,7 +4,6 @@ import Search from "../search/index.vue";
 import Notice from "../notice/index.vue";
 import { useNav } from "../../hooks/nav";
 import { templateRef } from "@vueuse/core";
-import avatars from "/@/assets/avatars.jpg";
 import { transformI18n } from "/@/plugins/i18n";
 import screenfull from "../screenfull/index.vue";
 import { useRoute, useRouter } from "vue-router";
@@ -33,6 +32,7 @@ const {
   resolvePath,
   pureApp,
   username,
+  avatars,
   avatarsStyle,
   getDropdownItemStyle
 } = useNav();
