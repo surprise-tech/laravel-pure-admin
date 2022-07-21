@@ -391,13 +391,15 @@ defineExpose({ changePage, clickReset });
                 :list="scope.row[column.bind.prop]"
               />
             </div>
-            <cu-image
-              v-else
-              :src="scope.row[column.bind.prop]"
-              :style="column.custom.style"
-              :index="0"
-              :list="[scope.row[column.bind.prop]]"
-            />
+            <div v-else>
+              <cu-image
+                v-if="scope.row[column.bind.prop]"
+                :src="scope.row[column.bind.prop]"
+                :style="column.custom.style"
+                :index="0"
+                :list="[scope.row[column.bind.prop]]"
+              />
+            </div>
           </template>
 
           <!-- 其他自定义 -->
